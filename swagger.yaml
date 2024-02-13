@@ -1,0 +1,211 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Jobs API (Nodejs)
+  contact: {}
+host: localhost:3000
+basePath: /api/v1
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /auth/register:
+    post:
+      summary: register
+      tags:
+      - auth
+      operationId: register
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /auth/login:
+    post:
+      summary: login
+      tags:
+      - auth
+      operationId: login
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /jobs:
+    get:
+      summary: list jobs
+      tags:
+      - jobs
+      operationId: listjobs
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    post:
+      summary: create job
+      tags:
+      - jobs
+      operationId: createjob
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createjobrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /jobs/65cb973ace77d820097b99c5:
+    get:
+      summary: get job
+      tags:
+      - jobs
+      operationId: getjob
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    delete:
+      summary: delete job
+      tags:
+      - jobs
+      operationId: deletejob
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /jobs/65cb98cc13825fcca9a97d22:
+    patch:
+      summary: update job
+      tags:
+      - jobs
+      operationId: updatejob
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatejobrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+definitions:
+  registerrequest:
+    title: registerrequest
+    example:
+      name: danchuks
+      email: danchuks@genas.com
+      password: Pass=123
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - email
+    - password
+  loginrequest:
+    title: loginrequest
+    example:
+      email: danchuks@genas.com
+      password: Pass=123
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+  createjobrequest:
+    title: createjobrequest
+    example:
+      company: Min Systems
+      position: Data Analyst
+    type: object
+    properties:
+      company:
+        type: string
+      position:
+        type: string
+    required:
+    - company
+    - position
+  updatejobrequest:
+    title: updatejobrequest
+    example:
+      company: Min Systems
+      position: Fullstack Developer
+      status: interview
+    type: object
+    properties:
+      company:
+        type: string
+      position:
+        type: string
+      status:
+        type: string
+    required:
+    - company
+    - position
+    - status
+security: []
+tags:
+- name: auth
+- name: jobs
